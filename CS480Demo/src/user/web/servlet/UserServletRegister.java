@@ -59,7 +59,12 @@ public class UserServletRegister extends HttpServlet {
 		}
 		form.setUsername(info.get(1));
 		form.setPassword(info.get(2));
-		form.setEmail(info.get(3));
+		form.setFirstName(info.get(3));
+		form.setLastName(info.get(4));
+		form.setIsAdmin(info.get(5));
+		form.setNeedVisaSponsor(info.get(6));
+		form.setLanguageProficiency(info.get(7));
+
 		
 		try {
 			userservice.regist(form);

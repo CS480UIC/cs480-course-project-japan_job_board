@@ -43,7 +43,7 @@ public class UserDao {
 				              + "user=shiyong&password=view1234");
 			*/
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/bookstore?"
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
 				              + "user=jon&password=Tomoko");
 		    String sql = "select * from tb_user where username=?";
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
@@ -55,7 +55,8 @@ public class UserDao {
 		    	if(user_name.equals(username)){
 		    		user.setUsername(resultSet.getString("username"));
 		    		user.setPassword(resultSet.getString("password"));
-		    		user.setEmail(resultSet.getString("email"));
+		    		user.setFirstName(resultSet.getString("first_name"));
+		    		user.setLastName(resultSet.getString("last_name"));
 		    		
 		    	}
 		    }
@@ -81,15 +82,19 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/bookstore?"
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
 				              + "user=jon&password=Tomoko");
 			
 			
-			String sql = "insert into tb_user values(?,?,?)";
+			String sql = "insert into tb_user values(?,?,?,?,?,?,?)";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,user.getUsername());
 		    preparestatement.setString(2,user.getPassword());
-		    preparestatement.setString(3,user.getEmail());
+		    preparestatement.setString(3,user.getFirstName());
+		    preparestatement.setString(4, user.getLastName());
+		    preparestatement.setString(5, user.getIsAdmin());
+		    preparestatement.setString(6, user.getNeedVisaSponsor());
+		    preparestatement.setString(7, user.getLanguageProficiency());
 		    preparestatement.executeUpdate();
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -102,7 +107,7 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/bookstore?"
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
 				              + "user=jon&password=Tomoko");
 			
 			
@@ -114,7 +119,8 @@ public class UserDao {
 				User user = new User();
 				user.setUsername(resultSet.getString("username"));
 	    		user.setPassword(resultSet.getString("password"));
-	    		user.setEmail(resultSet.getString("email"));
+	    		user.setFirstName(resultSet.getString("first_name"));
+	    		user.setLastName(resultSet.getString("last_name"));
 	    		list.add(user);
 			 }
 			 
