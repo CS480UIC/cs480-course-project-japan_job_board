@@ -36,7 +36,12 @@
 	<c:choose>
 		<c:when test="${empty sessionScope.session_user }">
 			<a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent">Login</a> |&nbsp; 
-			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">Register</a>		
+			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">Register</a>
+			<br />
+			<form action="<c:url value='/InitServlet'/>" method="post">
+				<input type="submit" value="Initialize Database"/>
+			</form>
+					
 		</c:when>
 		<c:otherwise>
 			Hello：${sessionScope.session_user.username };

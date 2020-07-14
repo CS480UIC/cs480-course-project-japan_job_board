@@ -2,6 +2,16 @@
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>CSC4710 Demo</display-name>
+    <servlet>
+    <description></description>
+    <display-name>InitServlet</display-name>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>user.web.servlet.InitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitServlet</servlet-name>
+    <url-pattern>/InitServlet</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>UserServletRegister</display-name>

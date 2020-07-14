@@ -1,0 +1,54 @@
+NOTE: tb_user table is shown being used below and is used in the project (I want that 4 points)
+
+*
+* Below scripts create the database (also in the user.sql file in eclipse project
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+create database cs480project;
+
+Use cs480project;
+
+create table tb_user (
+user_name VARCHAR(16) primary key,
+`password` VARCHAR(32) not null,
+first_name varchar(32) not null,
+last_name varchar(32) not null,
+is_admin tinyint(1),
+need_visa_sponsor tinyint(1) not null default 1,
+language_proficiency varchar(16)
+);
+
+create table tb_company(
+username varchar(16) primary key,
+password varchar(32) not null,
+company_name varchar(64) not null,
+company_location varchar(64) not null,
+company_bio text,
+);
+
+create table tb_job(
+job_id int auto_increment primary key,
+job_title varchar(64) not null,
+job_location varchar(64) not null,
+job_salary int,
+job_language varchar(32),
+job_company varchar(64) not null,
+job_description text,
+job_residence varchar(32)
+);
+
+*
+* Below scripts create the database (also in the user.sql file in eclipse project
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+/* Adds three values into the tb_user table */
+
+insert into tb_user(username, password, first_name, last_name, is_admin, need_visa_sponsor, language_proficiency) values ('mitsuo8', 'blue', 'Amber', 'Sanfilip', 0, 0, 'JLPT 4'), ('pokemon_master', 'mew', 'Brock', 'Onix', 0, 1, 'Newb'), ('Excel', 'Tomoko', 'Jon', 'Vega', 1, 0, 'JLPT N5');
+
+/* Adds three values into the tb_company table */
+
+insert into tb_company(username, password, company_name, company_location, company_bio) values ('rareware', 'banjo', 'Rare LTD.', 'Tokyo, Japan', 'We take too long in creating games from Xbox, and need people to get us going again!'), ('lawson', 'food', 'Lawson', 'Koriyama, Japan', 'We never close...'), ('loteria', 'melonsoda', 'Loteria', 'Iwaki, Japan', 'Insert something about chicken here');
+
+/* Adds three values into the tb_job table */
+
+insert into tb_job(job_title, job_location, job_salary, job_language, job_company, job_description, job_residence, job_employment) values ('Game Programmer', 'Tokyo, Japan', 4000000, 'JLPT N3', 'Rare LTD.', 'Game Engine Programmer for upcoming water based game on Xbox Series X and S consoles. Must be good with C++ and low-level languages', 'Japan Residents Only'), ('Clerk', 'Koriyama, Japan', 2500000, 'JLPT N2', 'Lawson', 'Assist in the stocking and checking out in our chain of convenience stores', 'Japan Residents Only', 'Part-Time'), ('Yoga Instructor', 'Iwaki, Japan', 3000000, 'JLPT N2', 'Prim Algo', 'Coach our clients to find inner peace and harmony', 'Will Sponsor Visa', 'Full-Time');
