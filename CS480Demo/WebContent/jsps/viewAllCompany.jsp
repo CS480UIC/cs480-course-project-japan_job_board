@@ -7,7 +7,7 @@
   <head>
     <base href="">
     
-    <title>body</title>
+    <title>Company Management</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,14 @@
 
   </head>
   
-  <body>
-    <h1>Welcome to the Demo</h1>
+  <body style='background: white;'>
+    <h1 style="text-align: center;">Company Management</h1>
     <br>
-    <a href="<c:url value='/findAll'/>" target="body">Please list all the user in the table</a>&nbsp;&nbsp;
- 	
+    <div style="text-align:center">
+    	<a href="<c:url value='/findAllCompany'/>" target="body">List All Companies</a>&nbsp;&nbsp;
+    	<a href="<c:url value='/jsps/newCompany.jsp'/>" target="_parent">Add New Company</a>
+    </div>
+ 
     
   </body>
 </html>

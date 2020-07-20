@@ -3,6 +3,8 @@ package user.service;
 import java.util.List;
 
 import user.dao.UserDao;
+import user.domain.Company;
+import user.domain.Job;
 import user.domain.User;
 
 /**
@@ -28,6 +30,40 @@ public class UserService {
 		userDao.add(form);
 	}
 	
+	public void addCompany(Company form) throws UserException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+		
+		Company company = userDao.findByUsernameCompany(form.getUsername());
+		if(company.getUsername()!=null && company.getUsername().equals(form.getUsername())) throw new UserException("This user name has been registered!");
+		userDao.addCompany(form);
+	}
+	
+	public void addJob(Job form) throws UserException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+		
+		//Job job = userDao.findByUsernameCompany(form.getUsername());
+		//if(company.getUsername()!=null && company.getUsername().equals(form.getUsername())) throw new UserException("This user name has been registered!");
+		userDao.addJob(form);
+	}
+	
+	public void update(User form, String oldUsername) throws UserException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+		
+		System.out.println("form getname:" + form.getUsername());
+		System.out.println("old username:" + oldUsername);
+		
+		if(oldUsername.equals(form.getUsername())) {
+			userDao.update(form, oldUsername);
+		}
+		
+		else {
+			System.out.println("INSIDE ELSE IN UPDATE");
+			User user = userDao.findByUsername(form.getUsername());
+			if(user.getUsername()!=null && user.getUsername().equals(form.getUsername())) throw new UserException("This user name has been registered!");
+			userDao.update(form, oldUsername);
+		}
+		
+
+		//userDao.update(form);
+	}
+	
 	
 	/**
 	 * Login function
@@ -51,6 +87,13 @@ public class UserService {
 	
 	public List<Object> findall() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.findall();
-		
+	}
+	
+	public List<Object> findallCompany() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.findallCompany();
+	}
+	
+	public List<Object> findallJob() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.findallJob();
 	}
 }

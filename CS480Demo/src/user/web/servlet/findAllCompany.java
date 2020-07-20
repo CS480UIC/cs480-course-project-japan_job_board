@@ -16,7 +16,7 @@ import user.service.UserService;
  * Servlet implementation class findAll
  */
 
-public class findAll extends HttpServlet {
+public class findAllCompany extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,14 +31,14 @@ public class findAll extends HttpServlet {
 		// TODO Auto-generated method stub
 		UserService userservice = new UserService();
 		try {
-			request.setAttribute("UserList", userservice.findall());
+			request.setAttribute("CompanyList", userservice.findallCompany());
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			List<Object> li = userservice.findall();
+			List<Object> li = userservice.findallCompany();
 			for(int i = 0; i < li.size();i++){
 				System.out.println(li.get(i).toString());
 			}
@@ -50,7 +50,7 @@ public class findAll extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("/Queryresult/list.jsp").forward(request, response);
+		request.getRequestDispatcher("/Queryresult/listCompany.jsp").forward(request, response);
 	}
 
 }

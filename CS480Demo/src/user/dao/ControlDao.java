@@ -12,9 +12,9 @@ import java.util.List;
 
 import user.domain.User;
 
-public class InitializeDao {
+public class ControlDao {
 	
-	public void initDB() {
+	public void controlDB() {
 		Statement statement;
 		try {
 			
@@ -54,12 +54,11 @@ public class InitializeDao {
 					"password varchar(32) not null," + 
 					"company_name varchar(64) not null," + 
 					"company_location varchar(64) not null," + 
-					"company_bio text," + 
-					"company_size int" +
+					"company_bio text" + 
 					");"
 					;
 			
-			String sqlAdd2 = "insert into tb_company(username, password, company_name, company_location, company_bio, company_size) values ('rareware', 'banjo', 'Rare LTD.', 'Tokyo, Japan', 'We take too long in creating games from Xbox, and need people to get us going again!', '500'), ('lawson', 'food', 'Lawson', 'Koriyama, Japan', 'We never close...', '3000'), ('loteria', 'melonsoda', 'Loteria', 'Iwaki, Japan', 'Insert something about chicken here', '1000');";
+			String sqlAdd2 = "insert into tb_company(username, password, company_name, company_location, company_bio) values ('rareware', 'banjo', 'Rare LTD.', 'Tokyo, Japan', 'We take too long in creating games from Xbox, and need people to get us going again!'), ('lawson', 'food', 'Lawson', 'Koriyama, Japan', 'We never close...'), ('loteria', 'melonsoda', 'Loteria', 'Iwaki, Japan', 'Insert something about chicken here');";
 			
 			statement.executeUpdate(sqlStatement2);
 			

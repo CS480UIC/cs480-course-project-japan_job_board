@@ -7,7 +7,7 @@
   <head>
     <base href="">
     
-    <title>body</title>
+    <title>Job Management</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,14 @@
 
   </head>
   
-  <body>
-    <h1>Welcome to the Demo</h1>
+  <body style='background: white;'>
+    <h1 style="text-align: center;">Job Management</h1>
     <br>
-    <a href="<c:url value='/findAll'/>" target="body">Please list all the user in the table</a>&nbsp;&nbsp;
- 	
+    <div style="text-align:center">
+    	<a href="<c:url value='/findAllJob'/>" target="body">List All Jobs</a>&nbsp;&nbsp;
+    	<a href="<c:url value='/jsps/newJob.jsp'/>" target="_parent">Add New Job</a>
+    </div>
+ 
     
   </body>
 </html>

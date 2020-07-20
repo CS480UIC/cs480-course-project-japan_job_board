@@ -19,8 +19,6 @@ public class User {
 	private String need_visa_sponsor;
 	private String language_proficiency;
 	
-
-	
 	public String getUsername() {
 		return username;
 	}
@@ -76,7 +74,14 @@ public class User {
 	public void setLanguageProficiency(String language_proficiency) {
 		this.language_proficiency = language_proficiency;
 	}
-	
+	/*
+	@Override
+	public String toString() {
+		return "User [ username=" + username + ", password="
+				+ password + ", first_name=" + first_name + 
+				", last_name="+ last_name;
+	}
+	*/
 	@Override
 	public String toString() {
 		return "User [ username=" + username + ", password="
@@ -87,4 +92,5 @@ public class User {
 				", need_visa_sponsor="+ need_visa_sponsor
 				+ "]";
 	}
+	
 }

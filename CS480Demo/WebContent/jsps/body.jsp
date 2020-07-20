@@ -20,8 +20,19 @@
 	-->
 
   </head>
-  
-  <body>
-    <h1>Welcome to the demo</h1>
-  </body>
+
+    	<c:choose>
+		<c:when test="${empty sessionScope.session_user }">
+		  <body style='background: white;'>
+    		<h1>Welcome to the demo</h1>
+    		<h3>Please Log-in Above</h3>
+    	  </body>
+		</c:when>
+		<c:otherwise>
+		  <body style='background: white;'>
+		      <h1>Welcome to the demo ${sessionScope.session_user.username }</h1>
+    	  </body>
+		</c:otherwise>
+	</c:choose>
+
 </html>

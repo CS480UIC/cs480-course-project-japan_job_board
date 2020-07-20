@@ -17,8 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <style type="text/css">
+
 	body {
-		background: #4682B4; 
+		background: #4682B4;
 	}
 	a {
 		text-transform:none;
@@ -31,7 +32,7 @@
   </head>
   
   <body>
-<h1 style="text-align: center;">CSC4710</h1>
+<h1 style="text-align: center;">Japan Job Board</h1>
 <div style="font-size: 10pt;">
 	<c:choose>
 		<c:when test="${empty sessionScope.session_user }">
@@ -43,12 +44,24 @@
 			</form>
 					
 		</c:when>
+		<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
+			<h3 style="text-align: center;">Hello Admin, ${sessionScope.session_user.username }</h3>
+			<div style="text-align:center">
+				<a href="<c:url value='/jsps/viewAll.jsp'/>" target="body">User Management</a> &nbsp;|&nbsp;
+				<a href="<c:url value='/jsps/viewAllCompany.jsp'/>" target="body">Company Management</a> &nbsp;|&nbsp;
+				<a href="<c:url value='/jsps/viewAllJobs.jsp'/>" target="body">Job Management</a> &nbsp;&nbsp;
+			</div>
+			
+		</c:when>
 		<c:otherwise>
 			Hello：${sessionScope.session_user.username };
+			
 			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Query Result</a>&nbsp;&nbsp;
 		</c:otherwise>
 	</c:choose>
 
 </div>
   </body>
+  
+  
 </html>

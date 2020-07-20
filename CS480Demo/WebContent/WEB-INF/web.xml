@@ -12,6 +12,16 @@
     <servlet-name>InitServlet</servlet-name>
     <url-pattern>/InitServlet</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>controls</display-name>
+    <servlet-name>controls</servlet-name>
+    <servlet-class>user.web.servlet.controls</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>controls</servlet-name>
+    <url-pattern>/controls</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>UserServletRegister</display-name>
@@ -42,6 +52,29 @@
     <servlet-name>findAll</servlet-name>
     <url-pattern>/findAll</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>findAllCompany</display-name>
+    <servlet-name>findAllCompany</servlet-name>
+    <servlet-class>user.web.servlet.findAllCompany</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllCompany</servlet-name>
+    <url-pattern>/findAllCompany</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <description></description>
+    <display-name>findAllJob</display-name>
+    <servlet-name>findAllJob</servlet-name>
+    <servlet-class>user.web.servlet.findAllJob</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllJob</servlet-name>
+    <url-pattern>/findAllJob</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>login.jsp</welcome-file>

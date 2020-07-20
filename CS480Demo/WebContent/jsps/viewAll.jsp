@@ -7,7 +7,7 @@
   <head>
     <base href="">
     
-    <title>body</title>
+    <title>User Management</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,14 @@
 
   </head>
   
-  <body>
-    <h1>Welcome to the Demo</h1>
+  <body style='background: white;'>
+    <h1 style="text-align: center;">User Management</h1>
     <br>
-    <a href="<c:url value='/findAll'/>" target="body">Please list all the user in the table</a>&nbsp;&nbsp;
- 	
+    <div style="text-align:center">
+    	<a href="<c:url value='/findAll'/>" target="body">List All Users</a>&nbsp;&nbsp;
+    	<a href="<c:url value='/jsps/newUser.jsp'/>" target="_parent">Add New User</a>
+    </div>
+ 
     
   </body>
 </html>
