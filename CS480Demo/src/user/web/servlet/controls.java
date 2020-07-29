@@ -91,6 +91,12 @@ public class controls extends HttpServlet {
             case "/update":
             	updateUser(request, response);
                 break;
+            case "/updateC":
+            	updateCompany(request, response);
+                break;
+            case "/updateJ":
+            	updateJob(request, response);
+                break;
             default:
                 //listBook(request, response);
                 break;
@@ -164,8 +170,82 @@ public class controls extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+    }
+    
+    private void updateCompany(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+		UserService userservice = new UserService();
+		Map<String,String[]> paramMap = request.getParameterMap();
+		Company form = new Company();
+		List<String> info = new ArrayList<String>();
 		
-	
+		for(String name : paramMap.keySet()) {
+			
+			String[] values = paramMap.get(name);
+			info.add(values[0]);
+			System.out.println(name + ": " + Arrays.toString(values));
+		}
+		form.setUsername(info.get(3));
+		form.setPassword(info.get(4));
+		form.setCompanyName(info.get(5));
+		form.setCompanyLocation(info.get(6));
+		form.setCompanyBio(info.get(7));
+		form.setCompanySize(info.get(8));
+		
+		try {
+			userservice.updateComp(form, info.get(1));
+			
+			response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
+		} catch (ClassNotFoundException | UserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+    }
+    
+    private void updateJob(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+		UserService userservice = new UserService();
+		Map<String,String[]> paramMap = request.getParameterMap();
+		User form = new User();
+		List<String> info = new ArrayList<String>();
+		
+		for(String name : paramMap.keySet()) {
+			
+			String[] values = paramMap.get(name);
+			info.add(values[0]);
+			System.out.println(name + ": " + Arrays.toString(values));
+		}
+		form.setUsername(info.get(3));
+		form.setPassword(info.get(4));
+		form.setFirstName(info.get(5));
+		form.setLastName(info.get(6));
+		form.setIsAdmin(info.get(7));
+		form.setNeedVisaSponsor(info.get(8));
+		form.setLanguageProficiency(info.get(9));
+
+		
+		try {
+			userservice.update(form, info.get(1));
+			
+			response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
+		} catch (ClassNotFoundException | UserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
     }
     
     private void newUser(HttpServletRequest request, HttpServletResponse response)

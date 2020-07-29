@@ -59,8 +59,24 @@ public class UserService {
 			if(user.getUsername()!=null && user.getUsername().equals(form.getUsername())) throw new UserException("This user name has been registered!");
 			userDao.update(form, oldUsername);
 		}
+		//userDao.update(form);
+	}
+	
+	public void updateComp(Company form, String oldUsername) throws UserException, ClassNotFoundException, InstantiationException, IllegalAccessException{
 		
-
+		System.out.println("form getname:" + form.getUsername());
+		System.out.println("old username:" + oldUsername);
+		
+		if(oldUsername.equals(form.getUsername())) {
+			userDao.updateComp(form, oldUsername);
+		}
+		
+		else {
+			System.out.println("INSIDE ELSE IN UPDATE");
+			Company user = userDao.findByUsernameCompany(form.getUsername());
+			if(user.getUsername()!=null && user.getUsername().equals(form.getUsername())) throw new UserException("This user name has been registered!");
+			userDao.updateComp(form, oldUsername);
+		}
 		//userDao.update(form);
 	}
 	

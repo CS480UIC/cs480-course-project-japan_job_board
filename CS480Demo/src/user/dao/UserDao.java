@@ -225,6 +225,31 @@ public class UserDao {
 		}
 	}
 	
+	public void updateComp(Company user, String oldUsername) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+				              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+			
+			
+			String sql = "UPDATE tb_company SET username=?, password=?, company_name=?, company_location=?, company_bio=?, company_size=? WHERE username=?";
+			System.out.println("[from userDao]user: " + user);
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+		    preparestatement.setString(1,user.getUsername());
+		    preparestatement.setString(2,user.getPassword());
+		    preparestatement.setString(3,user.getCompanyName());
+		    preparestatement.setString(4, user.getCompanyLocation());
+		    preparestatement.setString(5, user.getCompanyBio());
+		    preparestatement.setString(6, user.getCompanySize());
+		    preparestatement.setString(7, oldUsername);
+		    System.out.println("[preparestatement]: " + preparestatement);
+		    preparestatement.executeUpdate();
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	
 	public List<Object> findall() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		List<Object> list = new ArrayList<Object>();

@@ -40,7 +40,7 @@
             	<form action="<c:url value='/controls?action=deleteJ&jobid=${job.getJobID()}'/>" method="post">
 					<input type="submit" value='Delete ${job.getJobID()}'/>
 				</form>
-				<form action="<c:url value='/jsps/updateUser.jsp?jobid=${job.getJobID()}'/>" method="post">
+				<form action="<c:url value='/jsps/updateJob.jsp?jobid=${job.getJobID()}'/>" method="post">
 				
 					<input type="submit" value='Update ${job.getJobID()}'/>
 				</form>               

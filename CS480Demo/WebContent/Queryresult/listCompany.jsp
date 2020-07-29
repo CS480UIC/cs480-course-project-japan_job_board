@@ -34,7 +34,7 @@
             	<form action="<c:url value='/controls?action=deleteC&username=${company.username}'/>" method="post">
 					<input type="submit" value='Delete ${company.username}'/>
 				</form>
-				<form action="<c:url value='/jsps/updateUser.jsp?username=${company.username}'/>" method="post">
+				<form action="<c:url value='/jsps/updateCompany.jsp?username=${company.username}'/>" method="post">
 				
 					<input type="submit" value='Update ${company.username}'/>
 				</form>               
