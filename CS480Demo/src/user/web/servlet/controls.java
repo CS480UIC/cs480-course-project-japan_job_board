@@ -118,7 +118,8 @@ public class controls extends HttpServlet {
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		UserDao userdao = new UserDao();
-		userdao.deleteUser(request.getParameter("username")); 
+		userdao.deleteUser(request.getParameter("username"));
+		response.sendRedirect( request.getContextPath() + "/findAll");
     }
     
     private void deleteJob(HttpServletRequest request, HttpServletResponse response)
@@ -130,7 +131,8 @@ public class controls extends HttpServlet {
     private void deleteCompany(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		UserDao userdao = new UserDao();
-		userdao.deleteCompany(request.getParameter("username")); 
+		userdao.deleteCompany(request.getParameter("username"));
+		response.sendRedirect( request.getContextPath() + "/findAllCompany");
     }
     
     private void updateUser(HttpServletRequest request, HttpServletResponse response)
@@ -158,8 +160,8 @@ public class controls extends HttpServlet {
 		
 		try {
 			userservice.update(form, info.get(1));
-			
-			response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
+			response.sendRedirect( request.getContextPath() + "/findAll");
+			//response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
 		} catch (ClassNotFoundException | UserException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -196,7 +198,7 @@ public class controls extends HttpServlet {
 		try {
 			userservice.updateComp(form, info.get(1));
 			
-			response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
+			response.sendRedirect( request.getContextPath() + "/findAllCompany");
 		} catch (ClassNotFoundException | UserException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

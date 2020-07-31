@@ -44,6 +44,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>UserServletLogout</display-name>
+    <servlet-name>UserServletLogout</servlet-name>
+    <servlet-class>user.web.servlet.UserServletLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServletLogout</servlet-name>
+    <url-pattern>/UserServletLogout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>findAll</display-name>
     <servlet-name>findAll</servlet-name>
     <servlet-class>user.web.servlet.findAll</servlet-class>

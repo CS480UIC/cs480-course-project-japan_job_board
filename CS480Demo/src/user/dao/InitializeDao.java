@@ -43,7 +43,7 @@ public class InitializeDao {
 					"language_proficiency varchar(16)" + 
 					");"
 					;
-			String sqlAdd1 = "insert into tb_user(username, password, first_name, last_name, is_admin, need_visa_sponsor, language_proficiency) values ('mitsuo8', 'blue', 'Amber', 'Sanfilip', 0, 0, 'JLPT 4'), ('pokemon_master', 'mew', 'Brock', 'Onix', 0, 1, 'Newb'), ('Excel', 'Tomoko', 'Jon', 'Vega', 1, 0, 'JLPT N5');";
+			String sqlAdd1 = "insert into tb_user(username, password, first_name, last_name, is_admin, need_visa_sponsor, language_proficiency) values ('mitsuo8', 'blue', 'Amber', 'Sanfilip', 0, 0, 'JLPT N5'), ('pokemon_master', 'mew', 'Brock', 'Onix', 0, 1, 'Moot'), ('Excel', 'Tomoko', 'Jon', 'Vega', 1, 0, 'JLPT N4');";
 			
 			statement.executeUpdate(sqlStatement1);
 			

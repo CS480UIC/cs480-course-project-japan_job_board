@@ -1,37 +1,51 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <title>top</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<style type="text/css">
-
-	body {
-		background: #4682B4;
-	}
-	a {
-		text-transform:none;
-		text-decoration:none;
-	} 
-	a:hover {
-		text-decoration:underline;
-	}
-</style>
-  </head>
+    <a class="navbar-brand" href="#">
+    <img src="https://icon-library.com/images/japan-icon/japan-icon-11.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Japan Job Board
+    </a>
+    
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   
-  <body>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="nav navbar-nav ml-auto">
+      <c:choose>
+		<c:when test="${empty sessionScope.session_user }">
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent"><i class="fa fa-user" aria-hidden="true"></i> Register</a></li>
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/user/login.jsp'/>" target="_parent"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+      
+      	</c:when>
+      	<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
+      	
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/viewAll.jsp'/>">User Management</a></li>
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/viewAllCompany.jsp'/>">Company Management</a></li>
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/viewAllJobs.jsp'/>">Job Management</a></li>
+             
+      <li>
+      	<form id="my_form2" method="post" action="<c:url value='/InitServlet'/>">
+            <a class="nav-item nav-link" href="javascript:{}" onclick="document.getElementById('my_form2').submit();">Initialize Database</a>
+        </form>
+      </li>
+      
+      <li>
+      	<form id="my_form" method="get" action="<c:url value='/UserServletLogout'/>">
+            <a class="nav-item nav-link" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Logout ${sessionScope.session_user.getUsername() }</a>
+        </form>
+      </li>
+	  
+			
+		</c:when>
+	</c:choose>
+	</ul>
+  </div>
+</nav>
+
+  <!-- 
 <h1 style="text-align: center;">Japan Job Board</h1>
 <div style="font-size: 10pt;">
 	<c:choose>
@@ -61,7 +75,4 @@
 	</c:choose>
 
 </div>
-  </body>
-  
-  
-</html>
+ -->

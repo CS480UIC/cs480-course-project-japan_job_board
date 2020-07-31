@@ -2,37 +2,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="">
-    
-    <title>body</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-
     	<c:choose>
 		<c:when test="${empty sessionScope.session_user }">
-		  <body style='background: white;'>
-    		<h1>Welcome to the demo</h1>
-    		<h3>Please Log-in Above</h3>
-    	  </body>
+		<div class="jumbotron jumbotron-fluid">
+  			<div class="container">
+    			<h1 class="display-4">All kind of jobs in Japan for English speakers</h1>
+    			<p class="lead">👍 No Japanese required. 🌍 Overseas applicants welcome.</p>
+    			<hr class="my-4">
+    			<p>Hi! The initialization button below will create the tables and populate them. Make sure that the database: <em>cs480database</em> exists first. </p>
+  				<form action="<c:url value='/InitServlet'/>" method="post">
+					<button onclick="databaseAlert()" type="button submit" value="Initialize Database" class="btn btn-outline-danger">Initialize Database</button>
+				</form>
+  			</div>
+		</div>
 		</c:when>
 		<c:otherwise>
-		  <body style='background: white;'>
-		      <h1>Welcome to the demo ${sessionScope.session_user.username }</h1>
-    	  </body>
+		      <div class="jumbotron jumbotron-fluid">
+  				<div class="container">
+   			 		<h1 class="display-4">Hello ${sessionScope.session_user.getFirstName() }!</h1>		
+   			 		<p class="lead">Good luck with your search</p>
+  			    </div>
+			  </div>
 		</c:otherwise>
 	</c:choose>
-
-</html>
+	
+	<script>
+	function databaseAlert() {
+  		alert("Attempting Database Initialization");
+	}
+	</script>
