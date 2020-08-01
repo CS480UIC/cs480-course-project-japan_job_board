@@ -50,7 +50,7 @@
 				</form>
 				<br/>
 				<form action="<c:url value='/controls?action=deleteC&username=${company.username}'/>" method="post">
-					<button type="button submit" value="Delete" class="btn btn-outline-danger">Delete</button>
+					<button type="button submit" value="Delete" class="btn btn-outline-danger" onclick="if (!confirm('Are you sure you want to delete: ${company.getCompanyName()} with username: ${company.username }?')) return false;">Delete</button>
 				</form>    
             </td>
 		</tr>

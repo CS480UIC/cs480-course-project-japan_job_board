@@ -64,10 +64,14 @@ form {
   } else {}
   %>
   
-  <h1>Updating Job: ${jobid }</h1>
-  
-<p style="color: red; font-weight: 900">${msg }</p>
-<form action="<c:url value='/controls?action=update&oldUsername=${username }'/>" method="post">
+<div class="jumbotron jumbotron-fluid">
+  			<div class="container">
+    			<h1 class="display-4">Updating Job</h1>
+    			<p class="lead">Click the update button below to update changes</p>
+  			</div>
+  			<p style="color: red; font-weight: 900">${msg }</p>
+  			</div>
+<form action="<c:url value='/controls?action=updateJ&oldUsername=${username }'/>" method="post">
 	
 	<input type="hidden" name="method" value="regist"/>
 	Job Title   :<input type="text" name="username" value="<%= resultSet.getString(2) %>"/>

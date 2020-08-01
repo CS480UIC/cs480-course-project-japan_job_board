@@ -7,8 +7,18 @@
   <head>
     <base href="">
     
+    <c:choose>
+    <c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
     <title>Job Management</title>
-    
+    </c:when>
+	</c:choose>
+	
+	<c:choose>
+    <c:when test="${sessionScope.session_user.getIsAdmin() == 0 }">
+    <title>Job Search</title>
+    </c:when>
+	</c:choose>
+	
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -31,12 +41,30 @@
   
 		<div class="jumbotron jumbotron-fluid">
   			<div class="container">
-    			<h1 class="display-4">Job Management</h1>
-    			<p class="lead">View and modify job information</p>
+  			
+  			 <c:choose>
+    		<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
+    		<h1 class="display-4">Job Management</h1>
+    		<p class="lead">View and modify job information</p>
+    		</c:when>
+			</c:choose>
+	
+			<c:choose>
+    		<c:when test="${sessionScope.session_user.getIsAdmin() == 0 }">
+    		<h1 class="display-4">Job Search</h1>
+    			<p class="lead">Select an option below to search our database to find your future job here in Japan</p>
+    		</c:when>
+			</c:choose>
+  			
     			<hr class="my-4">
     			
-  				<a href="<c:url value='/findAllJob'/>" class="btn btn-outline-primary" role="button">List All Jobs</a>
+  				<a href="<c:url value='/findAllJob'/>" class="btn btn-outline-primary" role="button">View All Jobs</a>
+  				<a href="<c:url value='/findAllJobSalaryRange'/>" class="btn btn-outline-primary" role="button">View Jobs With Certain Salary</a>
+  				<c:choose>
+    			<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
   				<a href="<c:url value='/jsps/newJob.jsp'/>" class="btn btn-outline-primary" role="button">Add New Job</a>
+    			</c:when>
+				</c:choose>
   			</div>
 		</div>   
   </body>

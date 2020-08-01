@@ -125,7 +125,8 @@ public class controls extends HttpServlet {
     private void deleteJob(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 		UserDao userdao = new UserDao();
-		userdao.deleteJob(request.getParameter("jobid")); 
+		userdao.deleteJob(request.getParameter("jobid"));
+		response.sendRedirect( request.getContextPath() + "/findAllJob");
     }
     
     private void deleteCompany(HttpServletRequest request, HttpServletResponse response)
@@ -213,10 +214,11 @@ public class controls extends HttpServlet {
     
     private void updateJob(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-
 		UserService userservice = new UserService();
 		Map<String,String[]> paramMap = request.getParameterMap();
-		User form = new User();
+    	System.out.println(paramMap);
+
+		Job form = new Job();
 		List<String> info = new ArrayList<String>();
 		
 		for(String name : paramMap.keySet()) {
@@ -224,18 +226,18 @@ public class controls extends HttpServlet {
 			String[] values = paramMap.get(name);
 			info.add(values[0]);
 			System.out.println(name + ": " + Arrays.toString(values));
-		}
-		form.setUsername(info.get(3));
-		form.setPassword(info.get(4));
-		form.setFirstName(info.get(5));
-		form.setLastName(info.get(6));
-		form.setIsAdmin(info.get(7));
-		form.setNeedVisaSponsor(info.get(8));
-		form.setLanguageProficiency(info.get(9));
-
-		
+		}/*
+		form.setJobTitle(info.get(2));
+		form.setJobLocation(info.get(3));
+		form.setJobSalary(info.get(4));
+		form.setJobLanguage(info.get(5));
+		form.setJobCompany(info.get(6));
+		form.setJobDescription(info.get(7));
+		form.setJobResidence(info.get(8));
+		form.setJobEmployment(info.get(9));
+		*/
 		try {
-			userservice.update(form, info.get(1));
+			userservice.addJob(form);
 			
 			response.sendRedirect( request.getContextPath() + "/jsps/main.jsp");
 		} catch (ClassNotFoundException | UserException e) {
@@ -247,7 +249,8 @@ public class controls extends HttpServlet {
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
+
     }
     
     private void newUser(HttpServletRequest request, HttpServletResponse response)

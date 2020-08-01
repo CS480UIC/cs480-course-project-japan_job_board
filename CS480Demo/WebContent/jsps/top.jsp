@@ -37,8 +37,14 @@
             <a class="nav-item nav-link" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Logout ${sessionScope.session_user.getUsername() }</a>
         </form>
       </li>
-	  
-			
+		</c:when>
+		<c:when test="${sessionScope.session_user.getIsAdmin() == 0 }">
+      <li><a class="nav-item nav-link" href="<c:url value='/jsps/viewAllJobs.jsp'/>"/>View Jobs</a></li>
+      <li>
+      	<form id="my_form" method="get" action="<c:url value='/UserServletLogout'/>">
+            <a class="nav-item nav-link" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Logout ${sessionScope.session_user.getUsername() }</a>
+        </form>
+      </li>
 		</c:when>
 	</c:choose>
 	</ul>

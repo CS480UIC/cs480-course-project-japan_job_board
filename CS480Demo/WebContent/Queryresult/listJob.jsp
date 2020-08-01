@@ -19,29 +19,41 @@
 		<div class="jumbotron jumbotron-fluid">
   			<div class="container">
     			<h1 class="display-4">Jobs</h1>
-    			<p class="lead">List of all jobs in the database</p>
+    			<p class="lead">Here are all the jobs in the database</p>
   			</div>
 		</div>
 
 		<div class="table-responsive" style="padding: 0 20px 0 20px;">
 		<table class="table table-hover table-dark" align="center"">
 			<tr>
+				<c:choose>
+            	<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
 				<th>Job ID</th>
+				</c:when>
+				</c:choose>
 				<th>Job Title</th>
 				<th>Job Location</th>
-				<th>Job Salary</th>
+				<th>Job Salary ¥</th>
 				<th>Job Language</th>
 				<th>Job Company</th>
 				<th>Job Description</th>
 				<th>Job Residence</th>
 				<th>Job Employment</th>
+				<c:choose>
+            	<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
 				<th>Actions</th>
+				</c:when>
+				</c:choose>
 			</tr>
 
 
 		<c:forEach items="${JobList}" var="job">
 		<tr>
+			<c:choose>
+            <c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
 			<td>${job.getJobID() }</td>
+			</c:when>
+			</c:choose>
 			<td>${job.getJobTitle() }</td>
 			<td>${job.getJobLocation()}</td>
 			<td>${job.getJobSalary()}</td>
@@ -51,13 +63,17 @@
 			<td>${job.getJobResidence()}</td>
 			<td>${job.getJobEmploymentn()}</td>
             <td>
+            <c:choose>
+            <c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
 				<form action="<c:url value='/jsps/updateJob.jsp?jobid=${job.getJobID()}'/>" method="post">
 					<button type="button submit" value="Update" class="btn btn-outline-warning">Update</button>
 				</form>
 				<br/>
 				<form action="<c:url value='/controls?action=deleteJ&jobid=${job.getJobID()}'/>" method="post">
-					<button type="button submit" value="Delete" class="btn btn-outline-danger">Delete</button>
-				</form>          
+					<button type="button submit" value="Delete" class="btn btn-outline-danger" onclick="if (!confirm('Are you sure you want to delete the job: ${job.getJobTitle() } with job id: ${job.getJobID() }?')) return false;">Delete</button>
+				</form> 
+				</c:when>
+				</c:choose>       
             </td>
 		</tr>
 		</c:forEach>
