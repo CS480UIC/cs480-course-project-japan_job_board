@@ -127,4 +127,7 @@ public class UserService {
 	public List<Object> viewAllProgrammingJobs() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.viewAllProgrammingJobs();
 	}
+	public List<Object> viewLanguageGoodFromKoriyama() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.viewLanguageGoodFromKoriyama();
+	}
 }
