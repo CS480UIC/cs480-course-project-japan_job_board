@@ -38,7 +38,7 @@
 				<th>Job Company</th>
 				<th>Job Description</th>
 				<th>Job Residence</th>
-				<th>Company Name</th>
+				<th>Company Location</th>
 				<c:choose>
             	<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
 				<th>Actions</th>
