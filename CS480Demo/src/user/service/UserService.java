@@ -130,4 +130,7 @@ public class UserService {
 	public List<Object> viewLanguageGoodFromKoriyama() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.viewLanguageGoodFromKoriyama();
 	}
+	public List<Object> viewStartWithPNoNeedLiveInJapan() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.viewStartWithPNoNeedLiveInJapan();
+	}
 }

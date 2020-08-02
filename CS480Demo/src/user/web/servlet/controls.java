@@ -109,6 +109,9 @@ public class controls extends HttpServlet {
             case "/viewLanguageGoodFromKoriyama":
             	viewLanguageGoodFromKoriyama(request, response);
                 break;
+            case "/viewStartWithPNoNeedLiveInJapan":
+            	viewStartWithPNoNeedLiveInJapan(request, response);
+                break;
             default:
                 //listBook(request, response);
                 break;
@@ -367,6 +370,36 @@ public class controls extends HttpServlet {
         		}
         		try {
         			List<Object> li = userservice.viewLanguageGoodFromKoriyama();
+        			for(int i = 0; i < li.size();i++){
+        				System.out.println(li.get(i).toString());
+        			}
+        			
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}		
+        		try {
+        			request.getRequestDispatcher("/Queryresult/listJobLanguageGoodFromKoriyama.jsp").forward(request, response);
+        		} catch (ServletException | IOException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+            }
+            
+            private void viewStartWithPNoNeedLiveInJapan(HttpServletRequest request, HttpServletResponse response)
+                    throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        		// TODO Auto-generated method stub
+        		UserService userservice = new UserService();
+        		try {
+        			request.setAttribute("JobList", userservice.viewStartWithPNoNeedLiveInJapan());
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		try {
+        			List<Object> li = userservice.viewStartWithPNoNeedLiveInJapan();
         			for(int i = 0; i < li.size();i++){
         				System.out.println(li.get(i).toString());
         			}

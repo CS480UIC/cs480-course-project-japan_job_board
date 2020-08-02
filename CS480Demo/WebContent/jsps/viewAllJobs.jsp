@@ -66,7 +66,8 @@
 				<!-- complex -->
   				<a href="<c:url value='/controls?action=viewSizeLessF'/>" class="btn btn-outline-primary" role="button">View All Jobs With A Company Size Less Than 501</a>
   				<a href="<c:url value='/controls?action=viewAllProgramming'/>" class="btn btn-outline-primary" role="button">View All Programming Jobs With Company Bio</a>
-  				<a href="<c:url value='/controls?action=viewLanguageGoodFromKoriyama'/>" class="btn btn-outline-primary" role="button">View All Jobs in Koriyama, Japan with Required Strong Japanese</a>
+  				<a href="<c:url value='/controls?action=viewLanguageGoodFromKoriyama'/>" class="btn btn-outline-primary" role="button">View All Jobs Where Company is in Koriyama, Japan with Required Strong Japanese</a>
+  				<a href="<c:url value='/controls?action=viewStartWithPNoNeedLiveInJapan'/>" class="btn btn-outline-primary" role="button">View Jobs where company name begins with letter P and job doesn’t need you to currently live in Japan</a>
 
 
   				<c:choose>
