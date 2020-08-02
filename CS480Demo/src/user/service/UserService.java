@@ -133,4 +133,7 @@ public class UserService {
 	public List<Object> viewStartWithPNoNeedLiveInJapan() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.viewStartWithPNoNeedLiveInJapan();
 	}
+	public List<Object> viewJobsCompanyLocationEmpty() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.viewJobsCompanyLocationEmpty();
+	}
 }

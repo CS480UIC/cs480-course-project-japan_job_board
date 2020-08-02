@@ -68,7 +68,7 @@
   				<a href="<c:url value='/controls?action=viewAllProgramming'/>" class="btn btn-outline-primary" role="button">View All Programming Jobs With Company Bio</a>
   				<a href="<c:url value='/controls?action=viewLanguageGoodFromKoriyama'/>" class="btn btn-outline-primary" role="button">View All Jobs Where Company is in Koriyama, Japan with Required Strong Japanese</a>
   				<a href="<c:url value='/controls?action=viewStartWithPNoNeedLiveInJapan'/>" class="btn btn-outline-primary" role="button">View Jobs where company name begins with letter P and job doesn’t need you to currently live in Japan</a>
-
+  				<a href="<c:url value='/controls?action=viewJobsCompanyNameEmpty'/>" class="btn btn-outline-primary" role="button">View Jobs where company name is empty</a>
 
   				<c:choose>
     			<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
