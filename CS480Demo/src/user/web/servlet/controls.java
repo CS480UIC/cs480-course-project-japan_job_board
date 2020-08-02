@@ -410,7 +410,7 @@ public class controls extends HttpServlet {
         			e.printStackTrace();
         		}		
         		try {
-        			request.getRequestDispatcher("/Queryresult/listJobLanguageGoodFromKoriyama.jsp").forward(request, response);
+        			request.getRequestDispatcher("/Queryresult/viewStartWithPNoNeedLiveInJapan.jsp").forward(request, response);
         		} catch (ServletException | IOException e) {
         			// TODO Auto-generated catch block
         			e.printStackTrace();

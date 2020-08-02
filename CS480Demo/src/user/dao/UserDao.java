@@ -525,7 +525,7 @@ public class UserDao {
 	    		job.setJobLocation(resultSet.getString("job_location"));
 	    		job.setJobSalary(resultSet.getString("job_salary"));
 	    		job.setJobLanguage(resultSet.getString("job_language"));
-	    		job.setJobCompany(resultSet.getString("company_name"));
+	    		job.setJobCompany(resultSet.getString("job_company"));
 	    		job.setJobDescription(resultSet.getString("job_description"));
 	    		job.setJobResidence(resultSet.getString("job_residence"));
 	    		job.setJobEmployment(resultSet.getString("company_name"));
