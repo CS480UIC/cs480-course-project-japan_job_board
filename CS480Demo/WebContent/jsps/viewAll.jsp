@@ -33,8 +33,8 @@
     			<h1 class="display-4">User Management</h1>
     			<p class="lead">View and modify user information</p>
     			<hr class="my-4">
-    			
   				<a href="<c:url value='/findAll'/>" class="btn btn-outline-primary" role="button">List All Users</a>
+    			<a href="<c:url value='/controls?action=vulgarUsername'/>" class="btn btn-outline-primary" role="button">View All Vulgar Usernames</a>
   				<a href="<c:url value='/jsps/newUser.jsp'/>" class="btn btn-outline-primary" role="button">Add New User</a>
   			</div>
 		</div>    

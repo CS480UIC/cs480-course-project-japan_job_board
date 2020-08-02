@@ -112,4 +112,13 @@ public class UserService {
 	public List<Object> findallJob() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.findallJob();
 	}
+	public List<Object> findallNotTokyoJob() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.findallNotInTokyoJob();
+	}
+	public List<Object> findallnoVulgarCBio() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.findallnoVulgarCBio();
+	}
+	public List<Object> findallnoVulgarUUsername() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.findallnoVulgarUsername();
+	}
 }

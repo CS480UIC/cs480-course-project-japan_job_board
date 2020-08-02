@@ -36,6 +36,8 @@
     			<hr class="my-4">
     			
   				<a href="<c:url value='/findAllCompany'/>" class="btn btn-outline-primary" role="button">List All Companies</a>
+				<a href="<c:url value='/controls?action=noVulgarCBio'/>" class="btn btn-outline-primary" role="button">View All Company Bios with Vulgar Language</a>
+
   				<a href="<c:url value='/jsps/newCompany.jsp'/>" class="btn btn-outline-primary" role="button">Add New Company</a>
   			</div>
 		</div>

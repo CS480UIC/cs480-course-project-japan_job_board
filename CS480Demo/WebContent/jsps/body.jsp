@@ -9,7 +9,7 @@
     			<h1 class="display-4">All kind of jobs in Japan for English speakers</h1>
     			<p class="lead">👍 No Japanese required. 🌍 Overseas applicants welcome.</p>
     			<hr class="my-4">
-    			<p>Hi! The initialization button below will create the tables and populate them. Make sure that the database: <em>cs480database</em> exists first. </p>
+    			<p>Hi! The initialization button below will create the tables and populate them. Make sure that the database: <em>cs480project</em> exists first. </p>
   				<form action="<c:url value='/InitServlet'/>" method="post">
 					<button onclick="databaseAlert()" type="button submit" value="Initialize Database" class="btn btn-outline-danger">Initialize Database</button>
 				</form>

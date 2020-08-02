@@ -22,13 +22,11 @@ public class InitializeDao {
 
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
-				              + "user=jon&password=Tomoko&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
-		    //String sql = "select * from tb_user where username=?";
-			
+				              + "user=jon&password=Tomoko&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");			
 			statement = connect.createStatement();
 			statement.executeUpdate("drop table if exists tb_user");
-			statement.executeUpdate("drop table if exists tb_company");
 			statement.executeUpdate("drop table if exists tb_job");
+			statement.executeUpdate("drop table if exists tb_company");
 
 			
 			/* create tb_user table */
@@ -50,7 +48,7 @@ public class InitializeDao {
 			/* create tb_company table */
 			
 			String sqlStatement2 = "create table if not exists tb_company(" + 
-					"username varchar(16) primary key," + 
+					"username varchar(64) primary key," + 
 					"password varchar(32) not null," + 
 					"company_name varchar(64) not null," + 
 					"company_location varchar(64) not null," + 
@@ -59,7 +57,7 @@ public class InitializeDao {
 					");"
 					;
 			
-			String sqlAdd2 = "insert into tb_company(username, password, company_name, company_location, company_bio, company_size) values ('rareware', 'banjo', 'Rare LTD.', 'Tokyo, Japan', 'We take too long in creating games from Xbox, and need people to get us going again!', '500'), ('lawson', 'food', 'Lawson', 'Koriyama, Japan', 'We never close...', '3000'), ('loteria', 'melonsoda', 'Loteria', 'Iwaki, Japan', 'Insert something about chicken here', '1000');";
+			String sqlAdd2 = "insert into tb_company(username, password, company_name, company_location, company_bio, company_size) values ('Rare', 'banjo', 'Rare LTD.', 'Tokyo, Japan', 'We take too long in creating games from Xbox, and need people to get us going again!', '500'), ('Lawson', 'food', 'Lawson', 'Koriyama, Japan', 'We never close...', '3000'), ('Prim Algo', 'melonsoda', 'Prim Algo', 'Iwaki, Japan', 'Insert something about ass here', '20');";
 			
 			statement.executeUpdate(sqlStatement2);
 			
@@ -71,16 +69,18 @@ public class InitializeDao {
 					"job_location varchar(64) not null," + 
 					"job_salary int," + 
 					"job_language varchar(32)," + 
-					"job_company varchar(64) not null," + 
+					"job_company varchar(64)," + 
 					"job_description text," + 
 					"job_residence varchar(32)," +
-					"job_employment varchar(16) not null" +
+					"job_employment varchar(16) not null, " +
+					"foreign key(job_company) references tb_company(username)" +
 					");"
 					;
 			
-			String sqlAdd3 = "insert into tb_job(job_title, job_location, job_salary, job_language, job_company, job_description, job_residence, job_employment) values ('Game Programmer', 'Tokyo, Japan', 4000000, 'JLPT N3', 'Rare LTD.', 'Game Engine Programmer for upcoming water based game on Xbox Series X and S consoles. Must be good with C++ and low-level languages', 'Japan Residents Only', 'Full-Time'), ('Clerk', 'Koriyama, Japan', 2500000, 'JLPT N2', 'Lawson', 'Assist in the stocking and checking out in our chain of convenience stores', 'Japan Residents Only', 'Part-Time'), ('Yoga Instructor', 'Iwaki, Japan', 3000000, 'JLPT N2', 'Prim Algo', 'Coach our clients to find inner peace and harmony', 'Will Sponsor Visa', 'Full-Time');";
+			String sqlAdd3 = "insert into tb_job(job_title, job_location, job_salary, job_language, job_company, job_description, job_residence, job_employment) values ('Game Programmer', 'Tokyo, Japan', 4000000, 'JLPT N3', 'Rare', 'Game Engine Programmer for upcoming water based game on Xbox Series X and S consoles. Must be good with C++ and low-level languages', 'Japan Residents Only', 'Full-Time'), ('Clerk', 'Koriyama, Japan', 2500000, 'JLPT N2', 'Lawson', 'Assist in the stocking and checking out in our chain of convenience stores', 'Japan Residents Only', 'Part-Time'), ('Yoga Instructor', 'Iwaki, Japan', 3000000, 'JLPT N2', 'Prim Algo', 'Coach our clients to find inner peace and harmony', 'Will Sponsor Visa', 'Full-Time');";
 			
 			statement.executeUpdate(sqlStatement3);
+			
 			statement.executeUpdate(sqlAdd1);
 			statement.executeUpdate(sqlAdd2);
 			statement.executeUpdate(sqlAdd3);

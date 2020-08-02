@@ -85,6 +85,17 @@
     <url-pattern>/findAllJob</url-pattern>
   </servlet-mapping>
   
+        <servlet>
+    <description></description>
+    <display-name>findAllJobSalaryRange</display-name>
+    <servlet-name>findAllJobSalaryRange</servlet-name>
+    <servlet-class>user.web.servlet.findAllJobSalaryRange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllJobSalaryRange</servlet-name>
+    <url-pattern>/findAllJobSalaryRange</url-pattern>
+  </servlet-mapping>
+  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

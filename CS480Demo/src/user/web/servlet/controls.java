@@ -73,9 +73,6 @@ public class controls extends HttpServlet {
                 //showNewForm(request, response);
             	newJob(request, response);
                 break;
-            case "/insert":
-                //insertBook(request, response);
-                break;
             case "/delete":
                 deleteUser(request, response);
                 break;
@@ -85,9 +82,6 @@ public class controls extends HttpServlet {
             case "/deleteC":
                 deleteCompany(request, response);
                 break;
-            case "/edit":
-                //showEditForm(request, response);
-                break;
             case "/update":
             	updateUser(request, response);
                 break;
@@ -96,6 +90,15 @@ public class controls extends HttpServlet {
                 break;
             case "/updateJ":
             	updateJob(request, response);
+                break;
+            case "/nottokyoJob":
+            	nottokyoJob(request, response);
+                break;
+            case "/noVulgarCBio":
+            	noVulgarCBio(request, response);
+                break;
+            case "/vulgarUsername":
+            	noVulgarUsername(request, response);
                 break;
             default:
                 //listBook(request, response);
@@ -250,7 +253,96 @@ public class controls extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+    }
+    
+    private void nottokyoJob(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// TODO Auto-generated method stub
+		UserService userservice = new UserService();
+		try {
+			request.setAttribute("JobList", userservice.findallNotTokyoJob());
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			List<Object> li = userservice.findallJob();
+			for(int i = 0; i < li.size();i++){
+				System.out.println(li.get(i).toString());
+			}
+			
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		try {
+			request.getRequestDispatcher("/Queryresult/listJob.jsp").forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    private void noVulgarCBio(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// TODO Auto-generated method stub
+		UserService userservice = new UserService();
+		try {
+			request.setAttribute("CompanyList", userservice.findallnoVulgarCBio());
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			List<Object> li = userservice.findallCompany();
+			for(int i = 0; i < li.size();i++){
+				System.out.println(li.get(i).toString());
+			}
+			
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		try {
+			request.getRequestDispatcher("/Queryresult/listCompany.jsp").forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    private void noVulgarUsername(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+		// TODO Auto-generated method stub
+		UserService userservice = new UserService();
+		try {
+			request.setAttribute("UserList", userservice.findallnoVulgarUUsername());
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			List<Object> li = userservice.findall();
+			for(int i = 0; i < li.size();i++){
+				System.out.println(li.get(i).toString());
+			}
+			
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		try {
+			request.getRequestDispatcher("/Queryresult/list.jsp").forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     private void newUser(HttpServletRequest request, HttpServletResponse response)

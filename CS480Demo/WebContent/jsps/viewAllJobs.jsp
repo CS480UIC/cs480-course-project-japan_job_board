@@ -59,7 +59,13 @@
     			<hr class="my-4">
     			
   				<a href="<c:url value='/findAllJob'/>" class="btn btn-outline-primary" role="button">View All Jobs</a>
-  				<a href="<c:url value='/findAllJobSalaryRange'/>" class="btn btn-outline-primary" role="button">View Jobs With Certain Salary</a>
+  				
+  				<!-- simple -->
+  				<a href="<c:url value='/controls?action=nottokyoJob'/>" class="btn btn-outline-primary" role="button">View All Jobs Not In Tokyo</a>
+				
+				<!-- complex -->
+  				<a href="<c:url value='/controls?action=nottokyoJob'/>" class="btn btn-outline-primary" role="button">View All Jobs With A Company Size Less Than 500</a>
+
   				<c:choose>
     			<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">
   				<a href="<c:url value='/jsps/newJob.jsp'/>" class="btn btn-outline-primary" role="button">Add New Job</a>

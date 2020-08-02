@@ -282,6 +282,37 @@ public class UserDao {
 		return list;
 	}
 	
+	public List<Object> findallnoVulgarUsername() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		List<Object> list = new ArrayList<Object>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+				              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+			
+			
+			String sql = "select distinct * from tb_user where upper(username) like upper('%ass%') or upper(username) like upper('%fuck%') or upper(username) like upper('%bitch%')  order by username desc";
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+			ResultSet resultSet = preparestatement.executeQuery();
+			
+			while(resultSet.next()){
+				User user = new User();
+	    		user.setUsername(resultSet.getString("username"));
+	    		user.setPassword(resultSet.getString("password"));
+	    		user.setFirstName(resultSet.getString("first_name"));
+	    		user.setLastName(resultSet.getString("last_name"));
+	    		user.setIsAdmin(resultSet.getString("is_admin"));
+	    		user.setNeedVisaSponsor(resultSet.getString("need_visa_sponsor"));
+	    		user.setLanguageProficiency(resultSet.getString("language_proficiency"));
+	    		list.add(user);
+			 }
+			 
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	
 	public List<Object> findallCompany() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		List<Object> list = new ArrayList<Object>();
 		try {
@@ -292,6 +323,36 @@ public class UserDao {
 			
 			
 			String sql = "select * from tb_company";
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+			ResultSet resultSet = preparestatement.executeQuery();
+			
+			while(resultSet.next()){
+				Company company = new Company();
+	    		company.setUsername(resultSet.getString("username"));
+	    		company.setPassword(resultSet.getString("password"));
+	    		company.setCompanyName(resultSet.getString("company_name"));
+	    		company.setCompanyLocation(resultSet.getString("company_location"));
+	    		company.setCompanyBio(resultSet.getString("company_bio"));
+	    		company.setCompanySize(resultSet.getString("company_size"));
+	    		list.add(company);
+			 }
+			 
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	
+	public List<Object> findallnoVulgarCBio() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		List<Object> list = new ArrayList<Object>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+				              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+			
+			
+			String sql = "select distinct * from tb_company where upper(company_bio) like upper('%ass%') or upper(company_bio) like upper('%fuck%') or upper(company_bio) like upper('%bitch%')";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 			ResultSet resultSet = preparestatement.executeQuery();
 			
@@ -416,6 +477,39 @@ public void deleteJob(String jobid) throws ClassNotFoundException, Instantiation
 	} catch(SQLException e) {
 		throw new RuntimeException(e);
 	}
+}
+
+public List<Object> findallNotInTokyoJob() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	List<Object> list = new ArrayList<Object>();
+	try {
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection connect = DriverManager
+		          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+			              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+		
+		
+		String sql = "select * from tb_job where not job_location='Tokyo, Japan'";
+		PreparedStatement preparestatement = connect.prepareStatement(sql); 
+		ResultSet resultSet = preparestatement.executeQuery();
+		
+		while(resultSet.next()){
+			Job job = new Job();
+    		job.setJobID(resultSet.getString("job_id"));
+    		job.setJobTitle(resultSet.getString("job_title"));
+    		job.setJobLocation(resultSet.getString("job_location"));
+    		job.setJobSalary(resultSet.getString("job_salary"));
+    		job.setJobLanguage(resultSet.getString("job_language"));
+    		job.setJobCompany(resultSet.getString("job_company"));
+    		job.setJobDescription(resultSet.getString("job_description"));
+    		job.setJobResidence(resultSet.getString("job_residence"));
+    		job.setJobEmployment(resultSet.getString("job_employment"));
+    		list.add(job);
+		 }
+		 
+	} catch(SQLException e) {
+		throw new RuntimeException(e);
+	}
+	return list;
 }
 
 }
