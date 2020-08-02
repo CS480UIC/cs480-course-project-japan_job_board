@@ -405,6 +405,74 @@ public class UserDao {
 		}
 		return list;
 	}
+	
+	public List<Object> viewSizeLess501Jobs() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		List<Object> list = new ArrayList<Object>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+				              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+			
+			
+			String sql = "select * from tb_job inner join tb_company on tb_job.job_company=tb_company.username where company_size <= 500";
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+			ResultSet resultSet = preparestatement.executeQuery();
+    		System.out.println(resultSet);
+			while(resultSet.next()){
+				Job job = new Job();
+	    		job.setJobID(resultSet.getString("job_id"));
+	    		job.setJobTitle(resultSet.getString("job_title"));
+	    		job.setJobLocation(resultSet.getString("job_location"));
+	    		job.setJobSalary(resultSet.getString("job_salary"));
+	    		job.setJobLanguage(resultSet.getString("job_language"));
+	    		job.setJobCompany(resultSet.getString("job_company"));
+	    		job.setJobDescription(resultSet.getString("job_description"));
+	    		job.setJobResidence(resultSet.getString("job_residence"));
+	    		job.setJobEmployment(resultSet.getString("company_size"));
+	    		list.add(job);
+	    		System.out.println(job);
+			 }
+			 
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	
+	public List<Object> viewAllProgrammingJobs() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		List<Object> list = new ArrayList<Object>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+			          .getConnection("jdbc:mysql://localhost:3306/cs480project?"
+				              + "user=jon&password=Tomoko&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Chicago");
+			
+			
+			String sql = "select * from tb_job inner join tb_company on tb_job.job_company=tb_company.username where upper(job_title) like upper('%programmer%');";
+			PreparedStatement preparestatement = connect.prepareStatement(sql); 
+			ResultSet resultSet = preparestatement.executeQuery();
+    		System.out.println(resultSet);
+			while(resultSet.next()){
+				Job job = new Job();
+	    		job.setJobID(resultSet.getString("job_id"));
+	    		job.setJobTitle(resultSet.getString("job_title"));
+	    		job.setJobLocation(resultSet.getString("job_location"));
+	    		job.setJobSalary(resultSet.getString("job_salary"));
+	    		job.setJobLanguage(resultSet.getString("job_language"));
+	    		job.setJobCompany(resultSet.getString("job_company"));
+	    		job.setJobDescription(resultSet.getString("job_description"));
+	    		job.setJobResidence(resultSet.getString("company_location"));
+	    		job.setJobEmployment(resultSet.getString("company_bio"));
+	    		list.add(job);
+	    		System.out.println(job);
+			 }
+			 
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
 
 public void deleteUser(String username) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 	try {

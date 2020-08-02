@@ -121,4 +121,10 @@ public class UserService {
 	public List<Object> findallnoVulgarUUsername() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		return userDao.findallnoVulgarUsername();
 	}
+	public List<Object> viewSizeLess501Jobs() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.viewSizeLess501Jobs();
+	}
+	public List<Object> viewAllProgrammingJobs() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return userDao.viewAllProgrammingJobs();
+	}
 }

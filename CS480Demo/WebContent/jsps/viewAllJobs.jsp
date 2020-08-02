@@ -64,7 +64,9 @@
   				<a href="<c:url value='/controls?action=nottokyoJob'/>" class="btn btn-outline-primary" role="button">View All Jobs Not In Tokyo</a>
 				
 				<!-- complex -->
-  				<a href="<c:url value='/controls?action=nottokyoJob'/>" class="btn btn-outline-primary" role="button">View All Jobs With A Company Size Less Than 500</a>
+  				<a href="<c:url value='/controls?action=viewSizeLessF'/>" class="btn btn-outline-primary" role="button">View All Jobs With A Company Size Less Than 501</a>
+  				<a href="<c:url value='/controls?action=viewAllProgramming'/>" class="btn btn-outline-primary" role="button">View All Programming Jobs With Company Bio</a>
+
 
   				<c:choose>
     			<c:when test="${sessionScope.session_user.getIsAdmin() == 1 }">

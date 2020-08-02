@@ -100,6 +100,12 @@ public class controls extends HttpServlet {
             case "/vulgarUsername":
             	noVulgarUsername(request, response);
                 break;
+            case "/viewSizeLessF":
+            	viewSizeLessF(request, response);
+                break;
+            case "/viewAllProgramming":
+            	viewAllProgramming(request, response);
+                break; 
             default:
                 //listBook(request, response);
                 break;
@@ -284,6 +290,66 @@ public class controls extends HttpServlet {
 			e.printStackTrace();
 		}
     }
+            //complex 
+            private void viewSizeLessF(HttpServletRequest request, HttpServletResponse response)
+                    throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        		// TODO Auto-generated method stub
+        		UserService userservice = new UserService();
+        		try {
+        			request.setAttribute("JobList", userservice.viewSizeLess501Jobs());
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		try {
+        			List<Object> li = userservice.viewSizeLess501Jobs();
+        			for(int i = 0; i < li.size();i++){
+        				System.out.println(li.get(i).toString());
+        			}
+        			
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}		
+        		try {
+        			request.getRequestDispatcher("/Queryresult/listJobWithSize.jsp").forward(request, response);
+        		} catch (ServletException | IOException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+            }
+            
+            private void viewAllProgramming(HttpServletRequest request, HttpServletResponse response)
+                    throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        		// TODO Auto-generated method stub
+        		UserService userservice = new UserService();
+        		try {
+        			request.setAttribute("JobList", userservice.viewAllProgrammingJobs());
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		try {
+        			List<Object> li = userservice.viewSizeLess501Jobs();
+        			for(int i = 0; i < li.size();i++){
+        				System.out.println(li.get(i).toString());
+        			}
+        			
+        		} catch (InstantiationException | IllegalAccessException
+        				| ClassNotFoundException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}		
+        		try {
+        			request.getRequestDispatcher("/Queryresult/listJobProgrammingWithBio.jsp").forward(request, response);
+        		} catch (ServletException | IOException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+            }
     
     private void noVulgarCBio(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
